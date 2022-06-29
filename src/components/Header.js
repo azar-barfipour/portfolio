@@ -8,11 +8,6 @@ import Social from "./Social";
 import ThemeContext from "../store/theme-context";
 
 const useStyles = makeStyles((theme) => ({
-  avatar: {
-    width: theme.spacing(15),
-    height: theme.spacing(15),
-    margin: theme.spacing(1),
-  },
   title: {
     color: "tomato",
   },
