@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -12,35 +12,46 @@ import { faCss3, faHtml5, faReact } from "@fortawesome/free-brands-svg-icons";
 import meetup from "../images/meetup.png";
 import eCommerce from "../images/e-commerce.png";
 import location from "../images/location.png";
-import weather from "../images/weather.png";
+import portfolio from "../images/portfolio.png";
 import { GitHub } from "@material-ui/icons";
 import { Icon } from "@iconify/react";
+import ThemeContext from "../store/theme-context";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     background: "#233",
-    height: "100%",
+    marginTop: "3rem",
+  },
+  mainContainerLight: {
+    background: "#fff",
   },
   cardContainer: {
     padding: "2rem",
-    width: "95%",
-    maxWidth: 800,
+    width: "70%",
     margin: "3rem auto",
     background: "rgb(18,32,27)",
   },
   cardName: {
     color: "tomato",
   },
+  cardNameLight: {
+    color: "#043689",
+  },
   cardMedia: {
     background: "rgb(18,32,27)",
     width: "100%",
-    padding: "2rem 4rem",
+    padding: "2rem auto",
+    border: "1px solid tan",
+    borderRadius: ".5rem",
   },
   cardContent: {
     color: "rgb(248 220 183)",
     marginTop: "1rem",
     marginBottom: "1rem",
     fontSize: "1rem",
+  },
+  cardContentLight: {
+    color: "#3a3329",
   },
   cardAction: {
     display: "flex",
@@ -61,6 +72,21 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     marginRight: "1rem",
+  },
+  cardIconLight: {
+    color: "#043689",
+  },
+  cardContainerLight: {
+    background: "#dce4e7",
+  },
+  cardLight: {
+    border: "1px solid #3a3329",
+  },
+  link: {
+    color: "tomato",
+  },
+  linkLight: {
+    color: "#043689",
   },
 }));
 
@@ -113,33 +139,57 @@ const projects = [
       <FontAwesomeIcon icon={faReact} />,
       <Icon icon="simple-icons:materialui" />,
     ],
-    image: weather,
-    share: "",
-    demo: "",
+    image: portfolio,
+    share: "https://github.com/azar-barfipour/portfolio",
+    demo: "https://material-ui-portfolio.vercel.app/",
   },
 ];
 
 const Projects = () => {
+  const Ctx = useContext(ThemeContext);
+  const color = Ctx.theme;
+  const light = color === "light";
   const classes = useStyles();
   return (
-    <Box component="div" className={classes.mainContainer}>
+    <Box
+      component="div"
+      className={`${classes.mainContainer} ${
+        light && classes.mainContainerLight
+      }`}
+    >
       <Grid container justify="center">
         {projects.map((project, i) => (
           <Grid item md={12} key={i}>
-            <Card className={classes.cardContainer}>
+            <Card
+              className={`${classes.cardContainer} ${
+                light && classes.cardContainerLight
+              }`}
+            >
               <Box>
                 <Typography
                   variant="h5"
                   gutterBottom
-                  className={classes.cardName}
+                  className={`${classes.cardName} ${
+                    light && classes.cardNameLight
+                  }`}
                 >
                   {project.name}
                 </Typography>
                 <Box>
-                  <img src={project.image} className={classes.cardMedia}></img>
+                  <img
+                    src={project.image}
+                    className={`${classes.cardMedia} ${
+                      light && classes.cardLight
+                    }`}
+                  ></img>
                 </Box>
                 <Box>
-                  <Typography variant="body2" className={classes.cardContent}>
+                  <Typography
+                    variant="body2"
+                    className={`${classes.cardContent} ${
+                      light && classes.cardContentLight
+                    }`}
+                  >
                     {project.description}
                   </Typography>
                   <Box className={classes.cardFooter}></Box>
@@ -153,19 +203,34 @@ const Projects = () => {
                     underline="none"
                     className={classes.cardLink}
                   >
-                    <GitHub style={{ color: "tomato" }} />
+                    <GitHub
+                      className={`${classes.link} ${
+                        light && classes.linkLight
+                      }`}
+                    />
                   </Link>
                   <Link href={project.demo} target="_blank" underline="none">
                     <FontAwesomeIcon
                       icon={faLink}
-                      style={{ color: "tomato" }}
+                      className={`${classes.link} ${
+                        light && classes.linkLight
+                      }`}
                     />
                   </Link>
                 </Box>
-                <Box className={classes.cardIcon}>
+                <Box
+                  className={`${classes.cardIcon} ${
+                    light && classes.cardIconLight
+                  }`}
+                >
                   {project.technical &&
                     project.technical.map((tech) => (
-                      <Typography variant="body2" className={classes.cardIcon}>
+                      <Typography
+                        variant="body2"
+                        className={`${classes.cardIcon} ${
+                          light && classes.cardIconLight
+                        }`}
+                      >
                         {tech}
                       </Typography>
                     ))}

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Person from "@material-ui/icons/Person";
 import Work from "@material-ui/icons/Work";
 import School from "@material-ui/icons/School";
+import ThemeContext from "../store/theme-context";
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     background: "#233",
+    marginTop: "3rem",
   },
   timeLine: {
     position: "relative",
@@ -33,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
         left: "calc(50% - 1px)",
         right: "auto",
       },
+    },
+  },
+  timeLineLight: {
+    "&:before": {
+      border: "1px solid #453e34",
     },
   },
   timeLineItem: {
@@ -106,39 +113,93 @@ const useStyles = makeStyles((theme) => ({
   body1: {
     color: "tomato",
   },
+  body1Light: {
+    color: "rgb(59,129,246)",
+  },
   subtitle1: {
     color: "rgb(248 220 183)",
+  },
+  light: {
+    background: "#fff",
+    color: "rgb(59,129,246)",
+  },
+  timeLineYearLight: {
+    background: "rgb(59,129,246)",
+  },
+  subHeadingLight: {
+    color: "rgb(58 51 41)",
+  },
+  subtitle1Light: {
+    color: "rgb(92 91 89)",
+  },
+  timeLineItemLight: {
+    "&:before": {
+      borderColor: "rgb(59,129,246) rgb(59,129,246)  transparent transparent",
+    },
+    "&:after": {
+      border: "1px solid rgb(59,129,246)",
+    },
+    [theme.breakpoints.up("md")]: {
+      "&:nth-of-type(2n)": {
+        borderColor: "rgb(59,129,246)",
+      },
+      "&:nth-of-type(2n):before": {
+        borderColor: "transparent transparent rgb(59,129,246) rgb(59,129,246)",
+      },
+    },
   },
 }));
 
 const About = () => {
   const classes = useStyles();
+  const Ctx = useContext(ThemeContext);
+  const color = Ctx.theme;
+  const light = color === "light";
   return (
-    <Box component="header" className={classes.mainContainer}>
+    <Box
+      component="header"
+      className={`${classes.mainContainer} ${light && classes.light}`}
+    >
       <Box>
-        <Typography variant="h4" align="center" className={classes.heading}>
+        <Typography
+          variant="h4"
+          align="center"
+          className={`${classes.heading} ${light && classes.light}`}
+        >
           My Journey
         </Typography>
       </Box>
-      <Box component="div" className={classes.timeLine}>
+      <Box
+        component="div"
+        className={`${classes.timeLine} ${light && classes.timeLineLight}`}
+      >
         <Typography
           variant="h2"
-          className={`${classes.timeLineYear} ${classes.timeLineItem}`}
+          className={`${classes.timeLineYear} ${
+            light && classes.timeLineYearLight
+          } ${classes.timeLineItem}`}
         >
           <Person />
         </Typography>
-        <Box component="div" className={classes.timeLineItem}>
+        <Box
+          component="div"
+          className={`${classes.timeLineItem} ${
+            light && classes.timeLineItemLight
+          }`}
+        >
           <Typography
             variant="h5"
             align="center"
-            className={classes.subHeading}
+            className={`${classes.subHeading}
+            ${light && classes.subHeadingLight}`}
           >
             About me
           </Typography>
           <Typography
             variant="subtitle1"
             align="center"
-            className={classes.subtitle1}
+            className={`${classes.subtitle1}
+            ${light && classes.subtitle1Light}`}
           >
             I'm a self-taught web developer with experience in designing new
             features from ideation to production. I take into consideration the
@@ -151,25 +212,39 @@ const About = () => {
         </Box>
         <Typography
           variant="h2"
-          className={`${classes.timeLineYear} ${classes.timeLineItem}`}
+          className={`${classes.timeLineYear} ${
+            light && classes.timeLineYearLight
+          } ${classes.timeLineItem}`}
         >
           <Work />
         </Typography>
-        <Box component="div" className={classes.timeLineItem}>
+        <Box
+          component="div"
+          className={`${classes.timeLineItem} ${
+            light && classes.timeLineItemLight
+          }`}
+        >
           <Typography
             variant="h5"
             align="center"
-            className={classes.subHeading}
+            className={`${classes.subHeading}
+            ${light && classes.subHeadingLight}`}
           >
             Frontend Developer
           </Typography>
-          <Typography variant="body1" align="center" className={classes.body1}>
+          <Typography
+            variant="body1"
+            align="center"
+            className={`${classes.body1}
+            ${light && classes.body1Light}`}
+          >
             May 2022- Current
           </Typography>
           <Typography
             variant="subtitle1"
             align="center"
-            className={classes.subtitle1}
+            className={`${classes.subtitle1}
+            ${light && classes.subtitle1Light}`}
           >
             Currently, I started working as a volunteer frontend developer in
             FreeLiveNet company in Vancouver. I work remotely on an CRM
@@ -179,25 +254,39 @@ const About = () => {
         </Box>
         <Typography
           variant="h2"
-          className={`${classes.timeLineYear} ${classes.timeLineItem}`}
+          className={`${classes.timeLineYear} ${
+            light && classes.timeLineYearLight
+          } ${classes.timeLineItem}`}
         >
           <Work />
         </Typography>
-        <Box component="div" className={classes.timeLineItem}>
+        <Box
+          component="div"
+          className={`${classes.timeLineItem} ${
+            light && classes.timeLineItemLight
+          }`}
+        >
           <Typography
             variant="h5"
             align="center"
-            className={classes.subHeading}
+            className={`${classes.subHeading}
+            ${light && classes.subHeadingLight}`}
           >
             Software Analyst and Developer
           </Typography>
-          <Typography variant="body1" align="center" className={classes.body1}>
+          <Typography
+            variant="body1"
+            align="center"
+            className={`${classes.body1}
+            ${light && classes.body1Light}`}
+          >
             2015-2020
           </Typography>
           <Typography
             variant="subtitle1"
             align="center"
-            className={classes.subtitle1}
+            className={`${classes.subtitle1}
+            ${light && classes.subtitle1Light}`}
           >
             I worked for 4+ years in Behban, a big software company in my
             country, Iran. It was a great opportunity to collaborate with more
@@ -209,25 +298,39 @@ const About = () => {
 
         <Typography
           variant="h2"
-          className={`${classes.timeLineYear} ${classes.timeLineItem}`}
+          className={`${classes.timeLineYear} ${
+            light && classes.timeLineYearLight
+          } ${classes.timeLineItem}`}
         >
           <School />
         </Typography>
-        <Box component="div" className={classes.timeLineItem}>
+        <Box
+          component="div"
+          className={`${classes.timeLineItem} ${
+            light && classes.timeLineItemLight
+          }`}
+        >
           <Typography
             variant="h5"
             align="center"
-            className={classes.subHeading}
+            className={`${classes.subHeading}
+            ${light && classes.subHeadingLight}`}
           >
             Bachelor Degree
           </Typography>
-          <Typography variant="body1" align="center" className={classes.body1}>
+          <Typography
+            variant="body1"
+            align="center"
+            className={`${classes.body1}
+            ${light && classes.body1Light}`}
+          >
             2010-2015
           </Typography>
           <Typography
             variant="subtitle1"
             align="center"
-            className={classes.subtitle1}
+            className={`${classes.subtitle1}
+            ${light && classes.subtitle1Light}`}
           >
             I completed my undergraduate in Software Engineering. I learned
             basic concept of software and programming there.
@@ -235,25 +338,39 @@ const About = () => {
         </Box>
         <Typography
           variant="h2"
-          className={`${classes.timeLineYear} ${classes.timeLineItem}`}
+          className={`${classes.timeLineYear} ${
+            light && classes.timeLineYearLight
+          } ${classes.timeLineItem}`}
         >
           <School />
         </Typography>
-        <Box component="div" className={classes.timeLineItem}>
+        <Box
+          component="div"
+          className={`${classes.timeLineItem} ${
+            light && classes.timeLineItemLight
+          }`}
+        >
           <Typography
             variant="h5"
             align="center"
-            className={classes.subHeading}
+            className={`${classes.subHeading}
+            ${light && classes.subHeadingLight}`}
           >
             Diploma
           </Typography>
-          <Typography variant="body1" align="center" className={classes.body1}>
+          <Typography
+            variant="body1"
+            align="center"
+            className={`${classes.body1}
+            ${light && classes.body1Light}`}
+          >
             2021-2022
           </Typography>
           <Typography
             variant="subtitle1"
             align="center"
-            className={classes.subtitle1}
+            className={`${classes.subtitle1}
+            ${light && classes.subtitle1Light}`}
           >
             I joined Cornerstone International College to study Web Development.
             I gained many valuable and updated knowledge of web development such

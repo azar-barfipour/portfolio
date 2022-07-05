@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-const ThemeContext = React.createContext({ theme: "dark" });
+const ThemeContext = React.createContext({
+  theme: "dark",
+  themeHandler: () => {},
+});
 
 export const ThemeContextProvider = (props) => {
   const [theme, setTheme] = useState("dark");
@@ -7,7 +10,7 @@ export const ThemeContextProvider = (props) => {
     setTheme((curr) => (curr === "dark" ? "light" : "dark"));
   };
   return (
-    <ThemeContext.Provider value={{ theme, themeHandler }}>
+    <ThemeContext.Provider value={{ theme: theme, themeHandler: themeHandler }}>
       {props.children}
     </ThemeContext.Provider>
   );

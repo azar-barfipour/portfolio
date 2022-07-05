@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
@@ -13,17 +13,24 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import ThemeContext from "../store/theme-context";
 
 const useStyles = makeStyles((theme) => ({
   contactContainer: {
     background: "#233",
     height: "100vh",
   },
+  light: {
+    background: "#fff",
+  },
   heading: {
     color: "tomato",
     textAlign: "center",
     textTransform: "uppercase",
     marginBottom: "1rem",
+  },
+  headingLight: {
+    color: "rgb(59,129,246)",
   },
   form: {
     top: "50%",
@@ -33,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     color: "#fff",
+  },
+  inputLight: {
+    color: "#000",
   },
   button: {
     color: "tomato",
@@ -56,6 +66,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "inherit",
     justifyContent: "inherit",
   },
+  buttonLight: {
+    color: "rgb(59,129,246)",
+    border: "1px solid #000",
+  },
   span: {
     marginLeft: "6px",
   },
@@ -68,12 +82,18 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
     marginTop: "1rem",
   },
+  linkLight: {
+    color: "rgb(59,129,246)",
+  },
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     border: "2px solid #000",
     margin: "1rem auto",
+  },
+  modalLight: {
+    border: "2px solid #fff",
   },
   paper: {
     backgroundColor: "rgb(18,32,27)",
@@ -83,11 +103,18 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  paperLight: {
+    backgroundColor: "#fff",
+    border: "2px solid #000",
+  },
   paperTitle: {
     lineHeight: "1.75",
     letterSpacing: "0.02857em",
     textTransform: "uppercase",
     color: "tomato",
+  },
+  paperTitleLight: {
+    color: "rgb(59,129,246)",
   },
   paperText: {
     fontWeight: "400",
@@ -95,6 +122,9 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.02857em",
     textTransform: "uppercase",
     color: "tomato",
+  },
+  paperTextLight: {
+    color: "rgb(59,129,246)",
   },
 }));
 
@@ -121,7 +151,32 @@ const InputField = withStyles({
   },
 })(TextField);
 
+const InputFieldLight = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "rgb(59,129,246)",
+    },
+    "& label": {
+      color: "#000",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#000",
+      },
+      "&:hover fieldset": {
+        borderColor: "#000",
+      },
+      "&.Mui-focused fieldset": {
+        color: "#fff",
+        borderColor: "#000",
+      },
+    },
+  },
+})(TextField);
 const Contact = () => {
+  const Ctx = useContext(ThemeContext);
+  const color = Ctx.theme;
+  const light = color === "light";
   const classes = useStyles();
   const [result, setResult] = useState(false);
   const [isModal, setIsModal] = useState(false);
@@ -153,11 +208,14 @@ const Contact = () => {
   };
 
   return (
-    <Box component="div" className={classes.contactContainer}>
+    <Box
+      component="div"
+      className={`${classes.contactContainer} ${light && classes.light}`}
+    >
       {result ? (
         <Modal
           open={isModal}
-          className={classes.modal}
+          className={`${classes.modal} ${light && classes.modalLight}`}
           BackdropComponent={Backdrop}
           onClose={closeHandler}
           closeAfterTransition
@@ -168,9 +226,21 @@ const Contact = () => {
           aria-describedby="modal-modal-description"
         >
           <Fade in={isModal}>
-            <div className={classes.paper}>
-              <h2 className={classes.paperTitle}>Success</h2>
-              <p className={classes.paperText}>Thank you for contacting.</p>
+            <div className={`${classes.paper} ${light && classes.paperLight}`}>
+              <h2
+                className={`${classes.paperTitle} ${
+                  light && classes.paperTitleLight
+                }`}
+              >
+                Success
+              </h2>
+              <p
+                className={`${classes.paperText} ${
+                  light && classes.paperTextLight
+                }`}
+              >
+                Thank you for contacting.
+              </p>
             </div>
           </Fade>
         </Modal>
@@ -199,41 +269,94 @@ const Contact = () => {
       <Grid container justify="center">
         <Box component="form" className={classes.form}>
           <form ref={form} onSubmit={sendEmailHandler}>
-            <Typography variant="h5" className={classes.heading}>
+            <Typography
+              variant="h5"
+              className={`${classes.heading} ${light && classes.headingLight}`}
+            >
               Hire or Contact me...
             </Typography>
-            <InputField
-              name="from_name"
-              required
-              fullWidth={true}
-              label="Name"
-              variant="outlined"
-              inputProps={{ className: classes.input }}
-            />
-            <InputField
-              name="from_email"
-              required
-              fullWidth={true}
-              label="Email"
-              variant="outlined"
-              inputProps={{ className: classes.input }}
-              className={classes.field}
-            />
-            <InputField
-              name="message"
-              required
-              fullWidth={true}
-              label="Message"
-              variant="outlined"
-              multiline
-              rows={4}
-              inputProps={{ className: classes.input }}
-            />
+            {!light ? (
+              <InputField
+                name="from_name"
+                required
+                fullWidth={true}
+                label="Name"
+                variant="outlined"
+                inputProps={{
+                  className: classes.input,
+                }}
+              />
+            ) : (
+              <InputFieldLight
+                name="from_name"
+                required
+                fullWidth={true}
+                label="Name"
+                variant="outlined"
+                inputProps={{
+                  className: classes.inputLight,
+                }}
+              />
+            )}
+            {!light && (
+              <InputField
+                name="from_email"
+                required
+                fullWidth={true}
+                label="Email"
+                variant="outlined"
+                inputProps={{
+                  className: classes.input,
+                }}
+                className={classes.field}
+              />
+            )}
+            {light && (
+              <InputFieldLight
+                name="from_email"
+                required
+                fullWidth={true}
+                label="Email"
+                variant="outlined"
+                inputProps={{
+                  className: classes.inputLight,
+                }}
+                className={classes.field}
+              />
+            )}
+            {!light && (
+              <InputField
+                name="message"
+                required
+                fullWidth={true}
+                label="Message"
+                variant="outlined"
+                multiline
+                rows={4}
+                inputProps={{
+                  className: classes.input,
+                }}
+              />
+            )}
+            {light && (
+              <InputFieldLight
+                name="message"
+                required
+                fullWidth={true}
+                label="Message"
+                variant="outlined"
+                multiline
+                rows={4}
+                inputProps={{
+                  className: light && classes.inputLight,
+                }}
+              />
+            )}
             <button
               variant="outlined"
               fullWidth={true}
               endIcon={<Send />}
-              className={classes.button}
+              className={`${classes.button} ${light && classes.buttonLight}`}
             >
               Contact Me
               <span className={classes.span}>
@@ -244,7 +367,7 @@ const Contact = () => {
           <Link
             href="mailto:azar.barfipour@gmail.com"
             underline="none"
-            className={classes.link}
+            className={`${classes.link} ${light && classes.linkLight}`}
           >
             Email me directly
           </Link>
@@ -255,44 +378,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-// import React, { useRef } from "react";
-// // import emailjs from "@emailjs/browser";
-// import emailjs from "emailjs-com";
-
-// const Contact = () => {
-//   const form = useRef();
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-
-//     emailjs
-//       .sendForm(
-//         "service_6l0fw6p",
-//         "template_2my61rl",
-//         form.current,
-//         "6is7mucKIsIZcWr49"
-//       )
-//       .then(
-//         (result) => {
-//           console.log(result.text);
-//         },
-//         (error) => {
-//           console.log(error.text);
-//         }
-//       );
-//   };
-
-//   return (
-//     <form ref={form} onSubmit={sendEmail}>
-//       <label>Name</label>
-//       <input type="text" name="from_name" />
-//       <label>Email</label>
-//       <input type="email" name="from_email" />
-//       <label>Message</label>
-//       <textarea name="message" />
-//       <input type="submit" value="Send" />
-//     </form>
-//   );
-// };
-// export default Contact;
