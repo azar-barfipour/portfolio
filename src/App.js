@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Tools from "./components/Tools";
 import Contact from "./components/Contact";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import "./App.css";
 
 function App() {

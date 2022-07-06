@@ -17,7 +17,7 @@ import { GitHub } from "@material-ui/icons";
 import { Icon } from "@iconify/react";
 import ThemeContext from "../store/theme-context";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   mainContainer: {
     background: "#233",
     marginTop: "3rem",
@@ -177,6 +177,7 @@ const Projects = () => {
                 </Typography>
                 <Box>
                   <img
+                    alt="project"
                     src={project.image}
                     className={`${classes.cardMedia} ${
                       light && classes.cardLight

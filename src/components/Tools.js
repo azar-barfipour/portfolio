@@ -55,12 +55,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1rem",
     display: "flex",
     alignItems: "center",
-    ["@media (max-width:860px)"]: {
+    "@media (max-width:860px)": {
       width: "6rem",
       fontSize: ".7rem",
       display: "block",
     },
-    ["@media (max-width:600px)"]: {
+    "@media (max-width:600px)": {
       width: "3rem",
       fontSize: ".5rem",
       display: "block",
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "1rem",
     color: "tomato",
     fontSize: "2rem",
-    ["@media (max-width:860px)"]: {
+    "@media (max-width:860px)": {
       display: "none",
     },
   },

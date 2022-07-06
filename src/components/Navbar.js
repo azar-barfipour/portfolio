@@ -132,16 +132,12 @@ const Navbar = () => {
             component={NavLink}
             to={item.listPath}
           >
-            {/* <ListItemIcon className={classes.listItem}>
-                {item.listIcon}
-              </ListItemIcon> */}
             <ListItemText
               primary={item.listText}
               className={`${classes.listItemText} ${
                 light && classes.listItemTextLight
               } `}
             />
-            {/* <a className={classes.btn1}>{item.listText}</a> */}
           </ListItem>
         ))}
       </List>
