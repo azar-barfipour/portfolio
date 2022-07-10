@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
@@ -93,6 +93,28 @@ const useStyles = makeStyles((theme) => ({
       padding: ".3rem",
     },
   },
+  listLink: {
+    border: "1px solid tomato",
+    textDecoration: "none",
+    display: "inline-block",
+    margin: "3rem 1rem",
+    color: "tan",
+    padding: "1rem",
+    borderRadius: ".5rem",
+    fontSize: "1rem",
+    "&:hover": {
+      color: "tomato",
+      fontSize: "1.1rem",
+    },
+  },
+  listLinkLight: {
+    border: "2px solid rgb(59,129,246)",
+    color: "rgb(58 51 41)",
+    "&:hover": {
+      color: "rgb(59,129,246)",
+      fontSize: "1.1rem",
+    },
+  },
 }));
 
 const menuItems = [
@@ -140,6 +162,13 @@ const Navbar = () => {
             />
           </ListItem>
         ))}
+        <Link
+          to="./assets/Resume.pdf"
+          className={`${classes.listLink} ${light && classes.listLinkLight}`}
+          target="_blank"
+        >
+          RESUME
+        </Link>
       </List>
     </Box>
   );

@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
   },
   cardContainer: {
     padding: "2rem",
-    width: "70%",
+    width: "60%",
     margin: "3rem auto",
     background: "rgb(18,32,27)",
   },
@@ -93,7 +93,7 @@ const useStyles = makeStyles(() => ({
 const projects = [
   {
     name: "Meetup",
-    description: `A React app for finding events to join and having fun. Users can search for their favorite events and book them. Booked events would add to each user calendar. Also, if the user decide not attend the event, they can easily delete the event from the calendar. Moreover, users can add their event, so others can see or choose it.`,
+    description: `A React app for finding events to join and having fun. Users can search for their favorite events and book them. Booked events would add to each user calendar. Also, if the user decide not attend the event, they can easily delete the event from the calendar. Moreover, users can add their event, so others can see or choose it. I used Firebase Authentication and Context to get provide state in any pages of the App `,
     technical: [
       <FontAwesomeIcon icon={faHtml5} />,
       <FontAwesomeIcon icon={faCss3} />,
@@ -106,7 +106,7 @@ const projects = [
   },
   {
     name: "E-commerce",
-    description: `An e-commerce React app, using Redux and Google Authentication. Users after login can see handicraft products and they can add them to the card. Moreover, on the card, products cab be insert and delete.`,
+    description: `An e-commerce React app, using Redux toolkit and Firebase Google Authentication. Users after login can see handicraft products and they can add them to the card. Moreover, by using Redux on card, users can increase or decrease existing items.`,
     technical: [
       <FontAwesomeIcon icon={faHtml5} />,
       <FontAwesomeIcon icon={faCss3} />,
@@ -120,7 +120,7 @@ const projects = [
   },
   {
     name: "Weather-Map",
-    description: `A React app using Google map and Open Weather API for checking weather by location. Users can see the weather by allowing access to their location. Moreover, users can check any place on the map by markers.`,
+    description: `A React app using Google map and Open Weather API for checking weather by location. Users can see the weather by allowing access to their location. Moreover, users can check any place on the map by markers. This app it's my own idea, to see the temperature just by finding the location on the map. Using icons helps to find weather information easier.`,
     technical: [
       <FontAwesomeIcon icon={faHtml5} />,
       <FontAwesomeIcon icon={faCss3} />,
@@ -132,7 +132,7 @@ const projects = [
   },
   {
     name: "Portfolio",
-    description: `This Portfolio website using React and Martial UI`,
+    description: `This Portfolio website using React and Martial UI. It is possible to change the theme by choosing dark or light mode.`,
     technical: [
       <FontAwesomeIcon icon={faHtml5} />,
       <FontAwesomeIcon icon={faCss3} />,

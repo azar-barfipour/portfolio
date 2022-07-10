@@ -246,10 +246,12 @@ const About = () => {
             className={`${classes.subtitle1}
             ${light && classes.subtitle1Light}`}
           >
-            Currently, I started working as a volunteer frontend developer in
-            FreeLiveNet company in Vancouver. I work remotely on an CRM
-            application using Angular. It is a great opportunity to work and
-            learn at the same time, and collaborate using GitHub and Bitbucket.
+            Currently, I started working as a frontend developer in FreeLiveNet
+            company in Vancouver. I work remotely on an Rest API application
+            using Angular. It is a great opportunity to work and improve myself,
+            and collaborate using GitHub and Bitbucket. I'm working on testing,
+            debugging, developing and enhancing UI/UX and functions. Also, I'm
+            working on creating embed code of the application using JavaScript.
           </Typography>
         </Box>
         <Typography
@@ -316,7 +318,7 @@ const About = () => {
             className={`${classes.subHeading}
             ${light && classes.subHeadingLight}`}
           >
-            Bachelor Degree
+            Diploma
           </Typography>
           <Typography
             variant="body1"
@@ -324,7 +326,7 @@ const About = () => {
             className={`${classes.body1}
             ${light && classes.body1Light}`}
           >
-            2010-2015
+            2021-2022
           </Typography>
           <Typography
             variant="subtitle1"
@@ -332,8 +334,11 @@ const About = () => {
             className={`${classes.subtitle1}
             ${light && classes.subtitle1Light}`}
           >
-            I completed my undergraduate in Software Engineering. I learned
-            basic concept of software and programming there.
+            I joined Cornerstone International College to study Web Development.
+            I gained many valuable and updated knowledge of web development such
+            as SASS, React, Node.js, Ecma6, etc. I had great opportunities
+            working in groups and having scrum meetings, creating applications
+            by using Figma, Trello and GitHub.
           </Typography>
         </Box>
         <Typography
@@ -356,7 +361,7 @@ const About = () => {
             className={`${classes.subHeading}
             ${light && classes.subHeadingLight}`}
           >
-            Diploma
+            Bachelor Degree
           </Typography>
           <Typography
             variant="body1"
@@ -364,7 +369,7 @@ const About = () => {
             className={`${classes.body1}
             ${light && classes.body1Light}`}
           >
-            2021-2022
+            2010-2015
           </Typography>
           <Typography
             variant="subtitle1"
@@ -372,9 +377,8 @@ const About = () => {
             className={`${classes.subtitle1}
             ${light && classes.subtitle1Light}`}
           >
-            I joined Cornerstone International College to study Web Development.
-            I gained many valuable and updated knowledge of web development such
-            as SASS, React, Node.js, Ecma6, using Figma, Trello and GitHub.
+            I completed my undergraduate in Software Engineering. I learned
+            basic concept of software and programming there.
           </Typography>
         </Box>
       </Box>
