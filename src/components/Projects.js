@@ -7,9 +7,10 @@ import CardActions from "@material-ui/core/CardActions";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { faCss3, faHtml5, faReact } from "@fortawesome/free-brands-svg-icons";
 import meetup from "../images/meetup.png";
+import job from "../images/searchJob.png";
 import eCommerce from "../images/e-commerce.png";
 import location from "../images/location.png";
 import portfolio from "../images/portfolio.png";
@@ -103,6 +104,36 @@ const projects = [
     image: meetup,
     share: "https://github.com/azar-barfipour/React/tree/master/meetup",
     demo: "https://recat-meetup-project.web.app/Home",
+  },
+  //FIXME: add doctor appointment here
+  // {
+  //   name: "Doctor Appointment",
+  //   description: `Contributed on a React app for getting doctor appointments. Users and doctors both can create an account and login. Users can check list of doctors and choose the best one then get an appointment. It was a great experience working in a team, using Figma for the design part and having scrum meetings and dividing tasks in the Trello everyday.`,
+  //   technical: [
+  //     <FontAwesomeIcon icon={faHtml5} />,
+  //     <FontAwesomeIcon icon={faCss3} />,
+  //     <FontAwesomeIcon icon={faReact} />,
+  //     <Icon icon="simple-icons:firebase" />,
+  //   ],
+  //   image: doctor,
+  //   share: "https://github.com/kubilaycakmak/doctor-appointment",
+  //   // demo: "https://recat-meetup-project.web.app/Home",
+  // },
+  {
+    name: "Job Search",
+    description: `Contributed on a MERB stack React app for finding jobs using MongoDB and Nodejs. Users can search for jobs with the job or city keyword. Also they can add add jobs with specific skills.`,
+    technical: [
+      <FontAwesomeIcon icon={faHtml5} />,
+      <FontAwesomeIcon icon={faCss3} />,
+      <Icon icon="simple-icons:materialui" />,
+      <FontAwesomeIcon icon={faReact} />,
+      <FontAwesomeIcon icon={faDatabase} />,
+      <Icon icon="simple-icons:nodejs" />,
+      <Icon icon="simple-icons:express" />,
+    ],
+    image: job,
+    share: "https://github.com/sounit-organization/OLD-job_search_app_front",
+    demo: "https://job-search-app-46823.web.app/",
   },
   {
     name: "E-commerce",
