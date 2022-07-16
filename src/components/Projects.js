@@ -74,7 +74,7 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     marginRight: "1rem",
     "@media (max-width: 800px)": {
-      fontSize: "1.2rem",
+      fontSize: "1rem",
     },
   },
   cardIconLight: {
@@ -89,7 +89,7 @@ const useStyles = makeStyles(() => ({
   link: {
     color: "tomato",
     "@media (max-width: 800px)": {
-      fontSize: "1.2rem",
+      fontSize: "1rem",
     },
   },
   linkLight: {
