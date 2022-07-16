@@ -73,6 +73,9 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
     marginRight: "1rem",
+    "@media (max-width: 800px)": {
+      fontSize: "1.2rem",
+    },
   },
   cardIconLight: {
     color: "#043689",
@@ -85,6 +88,9 @@ const useStyles = makeStyles(() => ({
   },
   link: {
     color: "tomato",
+    "@media (max-width: 800px)": {
+      fontSize: "1.2rem",
+    },
   },
   linkLight: {
     color: "#043689",
